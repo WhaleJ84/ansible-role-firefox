@@ -1,0 +1,58 @@
+---
+- name: INSTALL | Firefox
+  tags:
+  - install
+  block:
+    - name: INSTALL | Ensure firefox package is installed
+      become: True
+      ansible.builtin.package:
+        name: firefox
+        state: latest
+
+    - name: INSTALL | Check firefox config folder exists
+      ansible.builtin.find:
+        path: "{{ ansible_user_dir }}/.mozilla/firefox"
+        patterns: '^.*\.default-release'
+        use_regex: True
+        file_type: directory
+      register: firefox_config_folder_search
+
+    - name: INSTALL | Create firefox config folder
+      block:
+      - name: INSTALL | Start firefox if config folder does not exist
+        ansible.builtin.shell:
+          cmd: "firefox &"
+        changed_when: False
+
+      - name: INSTALL | Wait 10 seconds for firefox to start
+        ansible.builtin.shell:
+          cmd: "sleep 10"
+        changed_when: False
+
+      - name: INSTALL | Kill firefox process
+        ansible.builtin.shell:
+          cmd: "kill $(pidof firefox)"
+        changed_when: False
+      when: firefox_config_folder_search.matched == 0
+
+- name: CONFIGURE | Firefox
+  tags:
+  - configure
+  block:
+    - name: CONFIGURE | Check firefox config folder exists
+      ansible.builtin.find:
+        path: "{{ ansible_user_dir }}/.mozilla/firefox"
+        patterns: '^.*\.default-release'
+        use_regex: True
+        file_type: directory
+      register: firefox_config_folder_search
+
+    - name: CONFIGURE | Register firefox config folder as a fact
+      ansible.builtin.set_fact:
+        firefox_config_folder_path: "{{ firefox_config_folder_search.files[0].path }}"
+
+    - name: CONFIGURE | Prevent PDFs downloading when opened
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        line: 'user_pref("browser.download.open_pdf_attachments_inline", true);'
