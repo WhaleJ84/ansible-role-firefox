@@ -56,3 +56,32 @@
         path: "{{ firefox_config_folder_path }}/user.js"
         create: True
         line: 'user_pref("browser.download.open_pdf_attachments_inline", true);'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
+
+    - name: CONFIGURE | Ensure chrome directory exists
+      ansible.builtin.file:
+        path: "{{ firefox_config_folder_path }}/chrome"
+        state: directory
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0700
+
+    - name: CONFIGURE | Ensure tab close button is removed in userChrome.css
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/chrome/userChrome.css"
+        create: True
+        line: ".tabbrowser-tab:not([pinned]) .tab-close-button { display:none !important; }"
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
+
+    - name: CONFIGURE | Ensure config reads userChrome.css file
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        line: 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
