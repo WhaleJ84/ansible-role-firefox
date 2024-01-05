@@ -117,7 +117,7 @@
         path: "{{ firefox_config_folder_path }}/user.js"
         create: True
         regex: "browser.toolbars.bookmarks.visibility"
-        line: 'user_pref("browser.toolbars.bookmarks.visibility", {{ toolbar_bookmark_visibility }});'
+        line: 'user_pref("browser.toolbars.bookmarks.visibility", "{{ toolbar_bookmark_visibility }}");'
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_id }}"
         mode: 0664
