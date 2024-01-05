@@ -31,5 +31,5 @@ This example playbook shows how I would use this role, with custom variables to 
       vars:
         prevent_default_download_pdf: "true"
         remove_close_button_from_tabs: "true"
-        toolbar_bookmark_visibility: '"newtab"'
+        toolbar_bookmark_visibility: "newtab"
 ```
