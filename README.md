@@ -34,3 +34,9 @@ This example playbook shows how I would use this role, with custom variables to 
         remove_close_button_from_tabs: "true"
         toolbar_bookmark_visibility: "newtab"
 ```
+
+Notes
+-----
+
+- The default search engine cannot be configured via `user.js` at the time of 05/01/2024 and must be configured manually
+
