@@ -4,3 +4,4 @@ remove_close_button_from_tabs: "false"
 toolbar_bookmark_visibility: "always"
 startup_page_option: 1
 startup_homepage: ""
+allow_health_reporting: "true"

@@ -142,3 +142,14 @@
         group: "{{ ansible_user_id }}"
         mode: 0664
 
+    - name: CONFIGURE | Set health reporting telemetry setting
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        regex: "datareporting.healthreport.uploadEnabled"
+        line: 'user_pref("datareporting.healthreport.uploadEnabled", {{ allow_health_reporting }});'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
+
+

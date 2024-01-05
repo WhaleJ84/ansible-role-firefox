@@ -16,6 +16,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | toolbar\_bookmark\_visibility | string | A lowercase value of [always, newtab, never] to state when the bookmarks toolbar should be visible. | "always" |
 | startup\_page\_option | integer | A value of 0-2 to state what page your browser loads on startup, where 0 is a blank homepage, 1 is your homepage, and 2 is your last viewed page. | 1 |
 | startup\_homepage | string | A URL for the homepage to load when a new tab is opened. **NOTE:** `startup_page_option` must be **1** for this to apply. | |
+| allow\_health\_reporting | string | A lowercase boolean value (true or false) to state whether to allow Firefox to report health telemetry | "true" |
 
 Example Playbook
 ----------------
@@ -33,6 +34,7 @@ This example playbook shows how I would use this role, with custom variables to 
         prevent_default_download_pdf: "true"
         remove_close_button_from_tabs: "true"
         toolbar_bookmark_visibility: "newtab"
+        allow\_health\_reporting: "false"
 ```
 
 Notes
