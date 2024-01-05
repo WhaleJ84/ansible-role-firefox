@@ -3,26 +3,23 @@ firefox
 
 Installs and configures firefox for the user
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| prevent\_default\_download\_pdf | string | A lowercase boolean value (true or false) to state whether PDFs should be prevented from automatically downloaded when opened in the browser. | "false" |
 
 Example Playbook
 ----------------
 
 ```yaml
 - hosts: localhost
-  roles:
-     - { role: whalej84.firefox, x: 42 }
+
+  tasks:
+    - name: Configure Firefox
+      ansible.builtin.import_role:
+        name: whalej84.firefox
+      vars:
+        prevent_default_download_pdf: "true"
 ```

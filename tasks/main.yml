@@ -51,11 +51,12 @@
       ansible.builtin.set_fact:
         firefox_config_folder_path: "{{ firefox_config_folder_search.files[0].path }}"
 
-    - name: CONFIGURE | Prevent PDFs downloading when opened
+    - name: CONFIGURE | Decide whether PDFs are downloaded when opened
       ansible.builtin.lineinfile:
         path: "{{ firefox_config_folder_path }}/user.js"
         create: True
-        line: 'user_pref("browser.download.open_pdf_attachments_inline", true);'
+        regex: "browser.download.open_pdf_attachments_inline"
+        line: 'user_pref("browser.download.open_pdf_attachments_inline", {{ prevent_default_download_pdf }});'
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_id }}"
         mode: 0664
