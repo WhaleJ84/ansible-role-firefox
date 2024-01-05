@@ -51,6 +51,15 @@
       ansible.builtin.set_fact:
         firefox_config_folder_path: "{{ firefox_config_folder_search.files[0].path }}"
 
+    - include_tasks: "{{ item }}"
+      loop:
+       #- configure_general.yml
+        - configure_home.yml
+       #- configure_search.yml
+       #- configure_privacy_and_security.yml
+       #- configure_sync.yml
+       #- configure_misc.yml
+
     - name: CONFIGURE | Decide whether PDFs are downloaded when opened
       ansible.builtin.lineinfile:
         path: "{{ firefox_config_folder_path }}/user.js"
@@ -118,26 +127,6 @@
         create: True
         regex: "browser.toolbars.bookmarks.visibility"
         line: 'user_pref("browser.toolbars.bookmarks.visibility", "{{ toolbar_bookmark_visibility }}");'
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
-        mode: 0664
-
-    - name: CONFIGURE | Set startup page functionality
-      ansible.builtin.lineinfile:
-        path: "{{ firefox_config_folder_path }}/user.js"
-        create: True
-        regex: "browser.startup.page"
-        line: 'user_pref("browser.startup.page", {{ startup_page_option }});'
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
-        mode: 0664
-
-    - name: CONFIGURE | Configure custom startup page
-      ansible.builtin.lineinfile:
-        path: "{{ firefox_config_folder_path }}/user.js"
-        create: True
-        regex: "browser.startup.homepage"
-        line: 'user_pref("browser.startup.homepage", "{{ startup_homepage }}");'
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_id }}"
         mode: 0664
