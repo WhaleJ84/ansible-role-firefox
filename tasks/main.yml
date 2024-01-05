@@ -131,3 +131,14 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_id }}"
         mode: 0664
+
+    - name: CONFIGURE | Configure custom startup page
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        regex: "browser.startup.homepage"
+        line: 'user_pref("browser.startup.homepage", "{{ startup_homepage }}");'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
+

@@ -15,6 +15,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | remove\_close\_button\_from\_tabs | string | A lowercase boolean value (true or false) to state wether the close button should be enabled on tabs. | "false" |
 | toolbar\_bookmark\_visibility | string | A lowercase value of [always, newtab, never] to state when the bookmarks toolbar should be visible. | "always" |
 | startup\_page\_option | integer | A value of 0-2 to state what page your browser loads on startup, where 0 is a blank homepage, 1 is your homepage, and 2 is your last viewed page. | 1 |
+| startup\_homepage | string | A URL for the homepage to load when a new tab is opened. **NOTE:** `startup_page_option` must be **1** for this to apply. | |
 
 Example Playbook
 ----------------
