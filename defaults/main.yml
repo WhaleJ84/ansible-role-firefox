@@ -1,2 +1,3 @@
 ---
 prevent_default_download_pdf: "false"
+remove_close_button_from_tabs: "false"
