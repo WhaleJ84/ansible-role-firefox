@@ -1,0 +1,71 @@
+---
+- name: CONFIGURE | Decide whether PDFs are downloaded when opened
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "browser.download.open_pdf_attachments_inline"
+    line: 'user_pref("browser.download.open_pdf_attachments_inline", {{ prevent_default_download_pdf }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
+
+- name: CONFIGURE | Remove tab close button
+  block:
+  - name: CONFIGURE | Ensure chrome directory exists
+    ansible.builtin.file:
+      path: "{{ firefox_config_folder_path }}/chrome"
+      state: directory
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+      mode: 0700
+
+  - name: CONFIGURE | Ensure tab close button is removed in userChrome.css
+    ansible.builtin.lineinfile:
+      path: "{{ firefox_config_folder_path }}/chrome/userChrome.css"
+      create: True
+      line: ".tabbrowser-tab:not([pinned]) .tab-close-button { display:none !important; }"
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+      mode: 0664
+
+  - name: CONFIGURE | Ensure config reads userChrome.css file
+    ansible.builtin.lineinfile:
+      path: "{{ firefox_config_folder_path }}/user.js"
+      create: True
+      regex: "toolkit.legacyUserProfileCustomizations.stylesheets"
+      line: 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+      mode: 0664
+  when: remove_close_button_from_tabs == "true"
+
+- name: CONFIGURE | Enable tab close button
+  block:
+  - name: CONFIGURE | Remove chrome directory if exists
+    ansible.builtin.file:
+      path: "{{ firefox_config_folder_path }}/chrome"
+      state: absent
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+      mode: 0700
+
+  - name: CONFIGURE | Ensure config does not read userChrome.css file
+    ansible.builtin.lineinfile:
+      path: "{{ firefox_config_folder_path }}/user.js"
+      create: True
+      regex: "toolkit.legacyUserProfileCustomizations.stylesheets"
+      line: 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", false);'
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+      mode: 0664
+  when: remove_close_button_from_tabs == "false"
+
+- name: CONFIGURE | Set bookmark toolbar visibility
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "browser.toolbars.bookmarks.visibility"
+    line: 'user_pref("browser.toolbars.bookmarks.visibility", "{{ toolbar_bookmark_visibility }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
