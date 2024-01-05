@@ -111,3 +111,13 @@
           group: "{{ ansible_user_id }}"
           mode: 0664
       when: remove_close_button_from_tabs == "false"
+
+    - name: CONFIGURE | Set bookmark toolbar visibility
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        regex: "browser.toolbars.bookmarks.visibility"
+        line: 'user_pref("browser.toolbars.bookmarks.visibility", {{ toolbar_bookmark_visibility }});'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
