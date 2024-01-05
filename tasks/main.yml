@@ -152,4 +152,13 @@
         group: "{{ ansible_user_id }}"
         mode: 0664
 
+    - name: CONFIGURE | Set study reporting telemetry setting
+      ansible.builtin.lineinfile:
+        path: "{{ firefox_config_folder_path }}/user.js"
+        create: True
+        regex: "app.shield.outsidestudies.enabled"
+        line: 'user_pref("app.shield.outsidestudies.enabled", {{ allow_study_reporting }});'
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0664
 
