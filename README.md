@@ -10,7 +10,7 @@ Role Variables
 | ---- | ---- | ----------- | ------- |
 | prevent\_default\_download\_pdf | string | A lowercase boolean value (true or false) to state whether PDFs should be prevented from automatically downloaded when opened in the browser. | "false" |
 | remove\_close\_button\_from\_tabs | string | A lowercase boolean value (true or false) to state wether the close button should be enabled on tabs. | "false" |
-| toolbar\_bookmark\_visibility | string | A lowercase value of [always, newtab, never] to state when the bookmarks toolbar should be visible. | '"always"' |
+| toolbar\_bookmark\_visibility | string | A lowercase value in double-quotes of ["always", "newtab", "never"] to state when the bookmarks toolbar should be visible. | '"always"' |
 
 Example Playbook
 ----------------
