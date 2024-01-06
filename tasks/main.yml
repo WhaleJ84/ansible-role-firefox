@@ -53,7 +53,7 @@
 
     - include_tasks: "{{ item }}"
       loop:
-       #- configure_general.yml
+        - configure_general.yml
         - configure_home.yml
        #- configure_search.yml
         - configure_privacy_and_security.yml

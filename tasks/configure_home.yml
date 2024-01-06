@@ -1,4 +1,5 @@
 ---
+# Also gets configured by General/Startup/Open previous windows and tabs
 - name: CONFIGURE | Set startup page functionality
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"

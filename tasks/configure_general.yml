@@ -1,0 +1,10 @@
+---
+- name: CONFIGURE | Determine whether links open in a new tab
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "browser.tabs.loadInBackground"
+    line: 'user_pref("browser.tabs.loadInBackground", "{{ load_new_tab_in_background }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
