@@ -19,6 +19,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | allow\_health\_reporting | string | A lowercase boolean value [true, false] to state whether to allow Firefox to report health telemetry | "true" |
 | allow\_study\_reporting | string | A lowercase boolean value [true, false] to state whether to allow Firefox to report study telemetry | "true" |
 | load\_new\_tab\_in\_background | string | A lowercase boolean value [true, false] to state whether new tabs will be switched to immedately. | "true" |
+| ask\_save\_passwords | string | A lowercase boolean value [true, false] to state whether the browser should prompt to save a password once entered. | "true" |
 
 Example Playbook
 ----------------
@@ -39,6 +40,7 @@ This example playbook shows how I would use this role, with custom variables to 
         allow_health_reporting: "false"
         allow_study_reporting: "false"
         load_new_tab_in_background: "false"
+        ask_save_passwords: "false"
 ```
 
 Notes
