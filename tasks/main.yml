@@ -39,17 +39,28 @@
   tags:
   - configure
   block:
-    - name: CONFIGURE | Check firefox config folder exists
+    - name: CONFIGURE | Find Mozilla directories
       ansible.builtin.find:
-        path: "{{ ansible_user_dir }}/.mozilla/firefox"
-        patterns: '^.*\.default-release'
+        paths: "{{ ansible_user_dir }}"
+        patterns: ".mozilla"
+        hidden: True
+        recurse: True
+        file_type: directory
+      register: mozilla_directories
+
+    - name: CONFIGURE | Find Firefox config directory
+      ansible.builtin.find:
+        paths: "{{ item.path }}/firefox"
+        patterns: '.*\.default'
         use_regex: True
+        hidden: True
         file_type: directory
       register: firefox_config_folder_search
+      with_items: "{{ mozilla_directories.files }}"
 
     - name: CONFIGURE | Register firefox config folder as a fact
       ansible.builtin.set_fact:
-        firefox_config_folder_path: "{{ firefox_config_folder_search.files[0].path }}"
+        firefox_config_folder_path: "{{ firefox_config_folder_search.results[0].files[0].path }}"
 
     - include_tasks: "{{ item }}"
       loop:
