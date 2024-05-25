@@ -22,6 +22,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | ask\_save\_passwords | string | A lowercase boolean value [true, false] to state whether the browser should prompt to save a password once entered. | "true" |
 | ask\_use\_location | integer | A value of [0, 1, 2] to state whether the browser should prompt to use your location, where 0 is default, 1 is yes, and 2 is no. | 0 |
 | ask\_use\_camera | integer | A value of [0, 1, 2] to state whether the browser should prompt to use your camera, where 0 is default, 1 is yes, and 2 is no. | 0 |
+| ask\_use\_microphone | integer | A value of [0, 1, 2] to state whether the browser should prompt to use your microphone, where 0 is default, 1 is yes, and 2 is no. | 0 |
 
 Example Playbook
 ----------------
@@ -45,6 +46,7 @@ This example playbook shows how I would use this role, with custom variables to 
         ask_save_passwords: "false"
         ask_use_location: 2
         ask_use_camera: 2
+        ask_use_microphone: 2
 ```
 
 Notes
