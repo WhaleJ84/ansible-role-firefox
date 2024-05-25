@@ -38,3 +38,13 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Set whether to ask to use camera
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "permissions.default.camera"
+    line: 'user_pref("permissions.default.camera", {{ ask_use_camera }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
