@@ -58,4 +58,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Set whether to ask to use desktop notifications
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "permissions.default.desktop-notification"
+    line: 'user_pref("permissions.default.desktop-notification", {{ ask_notify_desktop }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
     
