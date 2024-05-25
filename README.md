@@ -41,6 +41,7 @@ This example playbook shows how I would use this role, with custom variables to 
         prevent_default_download_pdf: "true"
         remove_close_button_from_tabs: "true"
         toolbar_bookmark_visibility: "newtab"
+        startup_page_option: 0
         allow_health_reporting: "false"
         allow_study_reporting: "false"
         load_new_tab_in_background: "false"
