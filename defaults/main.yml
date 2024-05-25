@@ -10,3 +10,4 @@ load_new_tab_in_background: "true"
 ask_save_passwords: "true"
 ask_use_location: 0
 ask_use_camera: 0
+ask_use_microphone: 0
