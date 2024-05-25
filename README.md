@@ -20,6 +20,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | allow\_study\_reporting | string | A lowercase boolean value [true, false] to state whether to allow Firefox to report study telemetry | "true" |
 | load\_new\_tab\_in\_background | string | A lowercase boolean value [true, false] to state whether new tabs will be switched to immedately. | "true" |
 | ask\_save\_passwords | string | A lowercase boolean value [true, false] to state whether the browser should prompt to save a password once entered. | "true" |
+| ask\_use\_location | integer | A value of [0, 1, 2] to state whether the browser should prompt to use your location, where 0 is default, 1 is yes, and 2 is no. | 0 |
 
 Example Playbook
 ----------------
@@ -41,6 +42,7 @@ This example playbook shows how I would use this role, with custom variables to 
         allow_study_reporting: "false"
         load_new_tab_in_background: "false"
         ask_save_passwords: "false"
+        ask_use_location: 2
 ```
 
 Notes
