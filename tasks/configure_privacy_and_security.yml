@@ -68,4 +68,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Set whether to use Global Privacy Control headers
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "privacy.globalprivacycontrol.enabled"
+    line: 'user_pref("privacy.globalprivacycontrol.enabled", {{ global_privacy_control }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
     
