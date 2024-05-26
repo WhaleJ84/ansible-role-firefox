@@ -3,8 +3,8 @@ firefox
 
 Installs and configures firefox for the user
 
-Role Requirements
------------------
+Requirements
+------------
 
 This role has no requirements.
 To include this role in your `requirements.yml` file, add the following list item:
