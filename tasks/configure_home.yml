@@ -20,3 +20,12 @@
     group: "{{ ansible_user_id }}"
     mode: 0664
 
+- name: CONFIGURE | Configure recommended stories
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "browser.newtabpage.activity-stream.feeds.section.topstories"
+    line: 'user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", {{ recommended_stories }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
