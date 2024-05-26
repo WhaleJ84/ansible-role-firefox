@@ -3,6 +3,20 @@ firefox
 
 Installs and configures firefox for the user
 
+Role Requirements
+-----------------
+
+This role has no requirements.
+To include this role in your `requirements.yml` file, add the following list item:
+
+```yaml
+---
+roles:
+  - name: whalej84.firefox
+    src: https://github.com/WhaleJ84/ansible-role-firefox.git
+    scm: git
+```
+
 Role Variables
 --------------
 
