@@ -26,6 +26,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | ask\_notify\_desktop | integer | A value of [0, 1, 2] to state whether the browser should prompt to notify via the desktop, where 0 is default, 1 is yes, and 2 is no. | 0 |
 | do\_not\_track | string | A lowercase boolean value [true, false] to state whether you want DNT headers to be included | "false" |
 | global\_privacy\_control | string | A lowercase boolean value [true, false] to state whether you want GPC headers to be included | "false" |
+| recommended\_stories | string | A lowercase boolean value [true, false] to state whether you want recommended stories shown on new tab pages | "true" |
 
 Example Playbook
 ----------------
@@ -54,6 +55,7 @@ This example playbook shows how I would use this role, with custom variables to 
         ask_notify_desktop: 2
         do_not_track: "true"
         global_privacy_control: "true"
+        recommended_stories: "false"
 ```
 
 Notes
