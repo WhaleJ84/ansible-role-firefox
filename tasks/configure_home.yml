@@ -29,3 +29,13 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Configure sponsored shortcut
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "browser.newtabpage.activity-stream.showSponsoredTopSites"
+    line: 'user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", {{ sponsored_shortcuts }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
