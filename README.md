@@ -36,10 +36,8 @@ This example playbook shows how I would use this role, with custom variables to 
 ```yaml
 - hosts: localhost
 
-  tasks:
-    - name: Configure Firefox
-      ansible.builtin.import_role:
-        name: whalej84.firefox
+  roles:
+    - role: whalej84.firefox
       vars:
         prevent_default_download_pdf: "true"
         remove_close_button_from_tabs: "true"
@@ -56,6 +54,7 @@ This example playbook shows how I would use this role, with custom variables to 
         do_not_track: "true"
         global_privacy_control: "true"
         recommended_stories: "false"
+      tags: [ firefox ]
 ```
 
 Notes
