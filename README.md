@@ -41,6 +41,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | do\_not\_track | string | A lowercase boolean value [true, false] to state whether you want DNT headers to be included | "false" |
 | global\_privacy\_control | string | A lowercase boolean value [true, false] to state whether you want GPC headers to be included | "false" |
 | recommended\_stories | string | A lowercase boolean value [true, false] to state whether you want recommended stories shown on new tab pages | "true" |
+| sponsored\_shortcuts | string | A lowercase boolean value [true, false] to state whether you want sponsored shortcuts shown on new tab pages | "true" |
 
 Example Playbook
 ----------------
@@ -69,6 +70,7 @@ This example playbook shows how I would use this role, with custom variables to 
         do_not_track: "true"
         global_privacy_control: "true"
         recommended_stories: "false"
+        sponsored_shortcuts: "false"
       tags: [ firefox ]
 ```
 
