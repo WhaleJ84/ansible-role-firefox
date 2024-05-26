@@ -14,3 +14,4 @@ ask_use_microphone: 0
 ask_notify_desktop: 0
 do_not_track: "true"
 global_privacy_control: "false"
+recommended_stories: "true"
