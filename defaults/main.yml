@@ -16,3 +16,4 @@ do_not_track: "true"
 global_privacy_control: "false"
 recommended_stories: "true"
 sponsored_shortcuts: "true"
+browser_extensions: []
