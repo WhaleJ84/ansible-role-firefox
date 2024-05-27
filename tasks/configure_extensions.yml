@@ -1,0 +1,35 @@
+---
+- name: CONFIGURE | Firefox
+  tags:
+  - extensions
+  block:
+    - name: CONFIGURE | Ensure specified browser extention files exist
+      ansible.builtin.get_url:
+        url: "{{ item.url }}"
+        dest: "{{ firefox_config_folder_path }}/extensions/{{ item.id | basename }}.xpi"
+        mode: '0644'
+      with_items: "{{ browser_extensions }}"
+
+    - name: CONFIGURE | Start firefox to install extensions
+      ansible.builtin.shell:
+        cmd: "firefox &"
+      changed_when: False
+
+    - name: CONFIGURE | Wait 5 seconds for firefox to start
+      ansible.builtin.shell:
+        cmd: "sleep 5"
+      changed_when: False
+
+    - name: CONFIGURE | Kill firefox process
+      ansible.builtin.shell:
+        cmd: "kill $(pidof firefox)"
+      changed_when: False
+
+    - name: CONFIGURE | Enable extensions
+      ansible.builtin.include_tasks: configure_extension_status.yml
+      loop: "{{ browser_extensions }}"
+      loop_control:
+        loop_var: extension
+      vars:
+        extension_id: "{{ extension.id }}"
+        
