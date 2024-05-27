@@ -42,6 +42,7 @@ It is recommended to set your own values as variables as shown in the Example Pl
 | global\_privacy\_control | string | A lowercase boolean value [true, false] to state whether you want GPC headers to be included | "false" |
 | recommended\_stories | string | A lowercase boolean value [true, false] to state whether you want recommended stories shown on new tab pages | "true" |
 | sponsored\_shortcuts | string | A lowercase boolean value [true, false] to state whether you want sponsored shortcuts shown on new tab pages | "true" |
+| browser\_extensions | list | A list containing entries of 'id' and 'url' values for any browser extensions you wish to be installed. See example below. | [] |
 
 Example Playbook
 ----------------
@@ -71,6 +72,11 @@ This example playbook shows how I would use this role, with custom variables to 
         global_privacy_control: "true"
         recommended_stories: "false"
         sponsored_shortcuts: "false"
+        browser_extensions:
+          - id: uBlock0@raymondhill.net
+            url: https://addons.mozilla.org/firefox/downloads/file/4290466/ublock_origin-latest.xpi
+          - id: keepassxc-browser@keepassxc.org
+            url: https://addons.mozilla.org/firefox/downloads/file/4285762/keepassxc_browser-latest.xpi
       tags: [ firefox ]
 ```
 
