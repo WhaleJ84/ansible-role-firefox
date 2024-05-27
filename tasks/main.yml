@@ -64,4 +64,4 @@
         - configure_privacy_and_security.yml
        #- configure_sync.yml
         - configure_misc.yml
-
+        - configure_extensions.yml
