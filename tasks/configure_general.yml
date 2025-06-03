@@ -8,3 +8,13 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Configure find sound status
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "accessibility.typeaheadfind.enablesound"
+    line: 'user_pref("accessibility.typeaheadfind.enablesound", "{{ typeaheadfind_sound_enabled }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664

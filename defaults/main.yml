@@ -7,6 +7,7 @@ startup_homepage: ""
 allow_health_reporting: "true"
 allow_study_reporting: "true"
 load_new_tab_in_background: "true"
+typeaheadfind_sound_enabled: "true"
 ask_save_passwords: "true"
 ask_use_location: 0
 ask_use_camera: 0
