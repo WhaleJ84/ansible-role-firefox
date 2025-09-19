@@ -74,6 +74,7 @@ This example playbook shows how I would use this role, with custom variables to 
         global_privacy_control: "true"
         recommended_stories: "false"
         sponsored_shortcuts: "false"
+        vertical_tabs: "true"
         browser_extensions:
           - id: uBlock0@raymondhill.net
             url: https://addons.mozilla.org/firefox/downloads/file/4290466/ublock_origin-latest.xpi

@@ -18,3 +18,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0664
+
+- name: CONFIGURE | Configure vertical tab status
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: True
+    regex: "sidebar.verticalTabs"
+    line: 'user_pref("sidebar.verticalTabs", "{{ vertical_tabs }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0664
+
