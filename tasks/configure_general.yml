@@ -45,7 +45,7 @@
     path: "{{ firefox_config_folder_path }}/user.js"
     create: true
     regex: "sidebar.revamp"
-    line: 'user_pref("sidebar.revamp", {{ true if vertical_tabs else sidebar_revamp }});'
+    line: 'user_pref("sidebar.revamp", {{ "true" if vertical_tabs else sidebar_revamp }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0664'
