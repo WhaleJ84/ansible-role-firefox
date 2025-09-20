@@ -38,3 +38,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0664'
+
+- name: CONFIGURE | Configure sidebar tools
+  when: sidebar_tools is defined
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: true
+    regex: "sidebar.main.tools"
+    line: 'user_pref("sidebar.main.tools", {{ sidebar_tools }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0664'
