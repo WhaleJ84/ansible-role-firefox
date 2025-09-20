@@ -23,8 +23,19 @@
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
     create: true
-    regex: "sidebar.verticalTabs"
+    regex: '"sidebar.verticalTabs"'
     line: 'user_pref("sidebar.verticalTabs", {{ vertical_tabs }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0664'
+
+- name: CONFIGURE | Dismiss vertical tab introduction
+  when: vertical_tabs is true
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: true
+    regex: "sidebar.verticalTabs.dragToPinPromo.dismissed"
+    line: 'user_pref("sidebar.verticalTabs.dragToPinPromo.dismissed", true);'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0664'
