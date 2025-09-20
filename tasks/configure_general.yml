@@ -7,7 +7,7 @@
     line: 'user_pref("browser.tabs.loadInBackground", {{ load_new_tab_in_background }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Configure find sound status
   ansible.builtin.lineinfile:
@@ -17,7 +17,7 @@
     line: 'user_pref("accessibility.typeaheadfind.enablesound", {{ typeaheadfind_sound_enabled }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Configure vertical tab status
   ansible.builtin.lineinfile:
@@ -27,5 +27,5 @@
     line: 'user_pref("sidebar.verticalTabs", {{ vertical_tabs }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 

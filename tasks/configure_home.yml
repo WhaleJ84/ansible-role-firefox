@@ -8,7 +8,7 @@
     line: 'user_pref("browser.startup.page", {{ startup_page_option }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Configure custom startup page
   ansible.builtin.lineinfile:
@@ -18,7 +18,7 @@
     line: 'user_pref("browser.startup.homepage", "{{ startup_homepage }}");'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Configure recommended stories
   ansible.builtin.lineinfile:
@@ -28,7 +28,7 @@
     line: 'user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", {{ recommended_stories }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Configure sponsored shortcut
   ansible.builtin.lineinfile:
@@ -38,4 +38,4 @@
     line: 'user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", {{ sponsored_shortcuts }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'

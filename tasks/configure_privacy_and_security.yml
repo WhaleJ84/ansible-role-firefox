@@ -7,7 +7,7 @@
     line: 'user_pref("datareporting.healthreport.uploadEnabled", {{ allow_health_reporting }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set study reporting telemetry setting
   ansible.builtin.lineinfile:
@@ -17,7 +17,7 @@
     line: 'user_pref("app.shield.outsidestudies.enabled", {{ allow_study_reporting }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to ask to save passwords
   ansible.builtin.lineinfile:
@@ -27,7 +27,7 @@
     line: 'user_pref("signon.rememberSignons", {{ ask_save_passwords }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to ask to use location
   ansible.builtin.lineinfile:
@@ -37,7 +37,7 @@
     line: 'user_pref("permissions.default.geo", {{ ask_use_location }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to ask to use camera
   ansible.builtin.lineinfile:
@@ -47,7 +47,7 @@
     line: 'user_pref("permissions.default.camera", {{ ask_use_camera }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to ask to use microphone
   ansible.builtin.lineinfile:
@@ -57,7 +57,7 @@
     line: 'user_pref("permissions.default.microphone", {{ ask_use_microphone }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to ask to use desktop notifications
   ansible.builtin.lineinfile:
@@ -67,7 +67,7 @@
     line: 'user_pref("permissions.default.desktop-notification", {{ ask_notify_desktop }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
 
 - name: CONFIGURE | Set whether to use Global Privacy Control headers
   ansible.builtin.lineinfile:
@@ -77,5 +77,5 @@
     line: 'user_pref("privacy.globalprivacycontrol.enabled", {{ global_privacy_control }});'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0664
+    mode: '0664'
     
