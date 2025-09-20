@@ -3,7 +3,7 @@
 - name: CONFIGURE | Set startup page functionality
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "browser.startup.page"
     line: 'user_pref("browser.startup.page", {{ startup_page_option }});'
     owner: "{{ ansible_user_id }}"
@@ -13,7 +13,7 @@
 - name: CONFIGURE | Configure custom startup page
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "browser.startup.homepage"
     line: 'user_pref("browser.startup.homepage", "{{ startup_homepage }}");'
     owner: "{{ ansible_user_id }}"
@@ -23,7 +23,7 @@
 - name: CONFIGURE | Configure recommended stories
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "browser.newtabpage.activity-stream.feeds.section.topstories"
     line: 'user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", {{ recommended_stories }});'
     owner: "{{ ansible_user_id }}"
@@ -33,7 +33,7 @@
 - name: CONFIGURE | Configure sponsored shortcut
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "browser.newtabpage.activity-stream.showSponsoredTopSites"
     line: 'user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", {{ sponsored_shortcuts }});'
     owner: "{{ ansible_user_id }}"

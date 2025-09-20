@@ -2,7 +2,7 @@
 - name: CONFIGURE | Determine whether links open in a new tab
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "browser.tabs.loadInBackground"
     line: 'user_pref("browser.tabs.loadInBackground", {{ load_new_tab_in_background }});'
     owner: "{{ ansible_user_id }}"
@@ -12,7 +12,7 @@
 - name: CONFIGURE | Configure find sound status
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "accessibility.typeaheadfind.enablesound"
     line: 'user_pref("accessibility.typeaheadfind.enablesound", {{ typeaheadfind_sound_enabled }});'
     owner: "{{ ansible_user_id }}"
@@ -22,7 +22,7 @@
 - name: CONFIGURE | Configure vertical tab status
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
-    create: True
+    create: true
     regex: "sidebar.verticalTabs"
     line: 'user_pref("sidebar.verticalTabs", {{ vertical_tabs }});'
     owner: "{{ ansible_user_id }}"
