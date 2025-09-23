@@ -29,6 +29,16 @@
     group: "{{ ansible_user_id }}"
     mode: '0664'
 
+- name: CONFIGURE | Configure vertical tab visibility
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: true
+    regex: "sidebar.visibility"
+    line: 'user_pref("sidebar.visibility", "{{ sidebar_visibility }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0664'
+
 - name: CONFIGURE | Dismiss vertical tab introduction
   when: vertical_tabs | bool
   ansible.builtin.lineinfile:
