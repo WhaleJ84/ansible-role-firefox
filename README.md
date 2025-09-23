@@ -17,6 +17,8 @@ roles:
     scm: git
 ```
 
+and install using `ansible-galaxy install -r requirements.yml`.
+
 Role Variables
 --------------
 
