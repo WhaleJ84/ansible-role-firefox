@@ -59,6 +59,7 @@ This example playbook shows how I would use this role, with custom variables to 
   roles:
     - role: whalej84.firefox
       vars:
+        browser_aboutconfig_showwarning: "false"
         prevent_default_download_pdf: "true"
         remove_close_button_from_tabs: "true"
         toolbar_bookmark_visibility: "newtab"

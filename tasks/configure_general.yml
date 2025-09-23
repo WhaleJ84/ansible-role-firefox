@@ -1,4 +1,14 @@
 ---
+- name: CONFIGURE | Determine whether about:config warning shows
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: true
+    regex: "browser.aboutConfig.showWarning"
+    line: 'user_pref("browser.aboutConfig.showWarning", {{ browser_aboutconfig_showwarning }});'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0664'
+
 - name: CONFIGURE | Determine whether links open in a new tab
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
