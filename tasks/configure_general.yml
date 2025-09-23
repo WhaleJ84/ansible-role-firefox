@@ -81,3 +81,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0664'
+
+- name: CONFIGURE | Configure UI customisation state
+  when: browser_uicustomization_state is defined
+  ansible.builtin.lineinfile:
+    path: "{{ firefox_config_folder_path }}/user.js"
+    create: true
+    regex: "browser.uiCustomization.state"
+    line: 'user_pref("browser.uiCustomization.state", "{{ browser_uicustomization_state }}");'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0664'
