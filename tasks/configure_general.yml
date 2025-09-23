@@ -30,7 +30,7 @@
     mode: '0664'
 
 - name: CONFIGURE | Dismiss vertical tab introduction
-  when: vertical_tabs is true
+  when: vertical_tabs | bool
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
     create: true
@@ -41,6 +41,7 @@
     mode: '0664'
 
 - name: CONFIGURE | Ensure sidebar is revamped
+  when: vertical_tabs | bool
   ansible.builtin.lineinfile:
     path: "{{ firefox_config_folder_path }}/user.js"
     create: true
