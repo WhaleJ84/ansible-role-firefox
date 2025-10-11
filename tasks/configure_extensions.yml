@@ -27,7 +27,7 @@
 
     - name: CONFIGURE | Enable extensions
       ansible.builtin.include_tasks: configure_extension_status.yml
-      loop: "{{ browser_extensions }}"
+      loop: "{{ browser_extensions | selectattr('tag', 'in', extensions_to_install | default(browser_extensions | map(attribute='tag') | list)) | list }}"
       loop_control:
         loop_var: extension
       vars:

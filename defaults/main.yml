@@ -22,3 +22,4 @@ browser_extensions: []
 vertical_tabs: "false"
 sidebar_revamp: "false"
 sidebar_visibility: "always-show"
+extensions_to_install: []
