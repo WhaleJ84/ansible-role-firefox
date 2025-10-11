@@ -1,24 +1,22 @@
 ---
-- name: CONFIGURE | Load "{{ extension_id }}" status
+- name: CONFIGURE | Load "{{ extension_name }}" status
   ansible.builtin.shell:
     cmd: "jq '(.addons[] | select(.id == \"{{ extension_id }}\").active)' {{firefox_config_folder_path }}/extensions.json"
   changed_when: False
   register: extension_active_status
 
-
-- name: CONFIGURE | Set "{{ extension_id }}" status to enabled
+- name: CONFIGURE | Set "{{ extension_name }}" status to enabled
   ansible.builtin.shell:
     cmd: "jq -c '(.addons[] | select(.id == \"{{ extension_id }}\").active) |= true' {{firefox_config_folder_path }}/extensions.json > /tmp/extensions.json && mv /tmp/extensions.json {{firefox_config_folder_path }}/extensions.json"
   when: extension_active_status.stdout == "false"
 
-- name: CONFIGURE | Load "{{ extension_id }}" userDisabled status
+- name: CONFIGURE | Load "{{ extension_name }}" userDisabled status
   ansible.builtin.shell:
     cmd: "jq '(.addons[] | select(.id == \"{{ extension_id }}\").userDisabled)' {{firefox_config_folder_path }}/extensions.json"
   changed_when: False
   register: extension_userDisabled_status
 
-
-- name: CONFIGURE | Set "{{ extension_id }}" userDisabled to false
+- name: CONFIGURE | Set "{{ extension_name }}" userDisabled to false
   ansible.builtin.shell:
     cmd: "jq -c '(.addons[] | select(.id == \"{{ extension_id }}\").userDisabled) |= false' {{firefox_config_folder_path }}/extensions.json > /tmp/extensions.json && mv /tmp/extensions.json {{firefox_config_folder_path }}/extensions.json"
   when: extension_userDisabled_status.stdout == "true"

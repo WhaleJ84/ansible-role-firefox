@@ -32,4 +32,5 @@
         loop_var: extension
       vars:
         extension_id: "{{ extension.id }}"
+        extension_name: "{{ extension.tag }}"
         
