@@ -8,7 +8,7 @@
         url: "{{ item.url }}"
         dest: "{{ firefox_config_folder_path }}/extensions/{{ item.id | basename }}.xpi"
         mode: '0644'
-      with_items: "{{ browser_extensions }}"
+      with_items: "{{ browser_extensions | selectattr('tag', 'in', extensions_to_install | default(browser_extensions | map(attribute='tag') | list)) | list }}"
 
     - name: CONFIGURE | Start firefox to install extensions
       ansible.builtin.shell:
